@@ -2,6 +2,7 @@
 <head>
 <title>Find Your Today's Lucky Number</title>
 <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
+<link rel="icon" type="image/png" sizes="512x512" href="https://i.imgur.com/6a97dXj.png"/>
 <style>
 *{
     margin: 0;
@@ -26,6 +27,15 @@ body{
     align-items: center;
     justify-content: center;
     gap: 15px;
+    transition: all 0.3s ease;
+}
+.inputarea.inputexpand{
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    gap: 0;
 }
 .inputarea input{
     width: 100%;
@@ -85,7 +95,7 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    gap: 15px;
     border-radius: 5px;
     border: 1px solid #cccccc;
     max-height: 0;
@@ -95,7 +105,6 @@ body{
     overflow: hidden;
 }
 .outputarea.expand{
-    margin-top: 20px;
     max-height: 1000px;
     opacity: 1;
     padding: 20px;
@@ -123,6 +132,24 @@ body{
     justify-content: center;
     padding: 5px;
 }
+.outputarea .btnarea button{
+    background: #4acf21;
+    color: #ffffff;
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.outputarea .btnarea button:hover{
+    background: #18837c;
+}
 </style>
 </head>
 <body>
@@ -133,8 +160,11 @@ body{
 </div>
 <div class="error" id="error">Enter Your Name!</div>
 <div class="outputarea">
-<p class="firstpera"><span id="nameresult">KunaL KumaR</span> Today Your Lucky Number is</p>
-<p id="numberresult" class="secondpera">100</p>
+<p class="firstpera"><span id="nameresult"></span> Today Your Lucky Number is</p>
+<p id="numberresult" class="secondpera">00</p>
+<div class="btnarea">
+<button class="ReGenerate" id="ReGenerate">ReGenerate</button>
+</div>
 </div>
 </section>
 <script>
@@ -146,6 +176,7 @@ generate.addEventListener("click", () => {
 if(input.value){
 document.querySelector('.error').classList.remove("errorexpand");
 document.querySelector('.outputarea').classList.add("expand");
+document.querySelector('.inputarea').classList.add("inputexpand");
 nameresult.innerText = input.value;
 var randomNum = Math.random() * 100;
 randomNum = Math.floor(randomNum);
@@ -155,6 +186,12 @@ else if(input.value === ""){
 document.querySelector('.error').classList.add("errorexpand");
 input.focus();
 }
+});
+var ReGenerate = document.getElementById("ReGenerate");
+ReGenerate.addEventListener("click", () => {
+document.querySelector('.outputarea').classList.remove("expand");
+document.querySelector('.inputarea').classList.remove("inputexpand");
+input.value = "";
 });
 </script>
 </body>
