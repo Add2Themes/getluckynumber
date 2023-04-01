@@ -1,5 +1,7 @@
+<html>
+<head>
+<title>Find Your Today's Lucky Number</title>
 <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
 <style>
 *{
     margin: 0;
@@ -121,27 +123,19 @@ body{
     justify-content: center;
     padding: 5px;
 }
-@media (min-width: 720px) {
-.container{
-margin: 40px auto;
-padding: 40px;
-width: 60%;
-}
-}
 </style>
-
+</head>
+<body>
 <section class="container">
-    <div class="inputarea">
-    <input type="text" id="input" placeholder="Enter Your Full Name.">
-    <button id="generate">generate</button>
-    </div>
-    
-    <div class="error" id="error">Enter Your Name!</div>
-    
-    <div class="outputarea">
-    <p class="firstpera"><span id="nameresult">KunaL KumaR</span> Today Your Lucky Number is</p>
-    <p id="numberresult" class="secondpera">100</p>
-    </div>
+<div class="inputarea">
+<input type="text" id="input" placeholder="Enter Your Full Name.">
+<button id="generate">generate</button>
+</div>
+<div class="error" id="error">Enter Your Name!</div>
+<div class="outputarea">
+<p class="firstpera"><span id="nameresult">KunaL KumaR</span> Today Your Lucky Number is</p>
+<p id="numberresult" class="secondpera">100</p>
+</div>
 </section>
 <script>
 var generate = document.getElementById("generate");
@@ -161,6 +155,7 @@ else if(input.value === ""){
 document.querySelector('.error').classList.add("errorexpand");
 input.focus();
 }
-
 });
 </script>
+</body>
+</html>
