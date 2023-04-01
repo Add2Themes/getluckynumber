@@ -1,0 +1,163 @@
+<meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: tahoma;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(to left top, #18837c, #4acf21);
+}
+.container{
+    background: #f1f1f7;
+    margin: 20px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.inputarea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.inputarea input{
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.inputarea input:hover{
+    border-color: #4acf21;
+}
+.inputarea button{
+    background: #4acf21;
+    color: #ffffff;
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.inputarea button:hover{
+    background: #18837c;
+}
+.error{
+    color: #CD6155;
+    border-radius: 5px;
+    text-align: center;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.error.errorexpand{
+    margin-top: 15px;
+    max-height: 1000px;
+    opacity: 1;
+}
+.outputarea{
+    background: #ffffff;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.outputarea.expand{
+    margin-top: 20px;
+    max-height: 1000px;
+    opacity: 1;
+    padding: 20px;
+}
+.outputarea .firstpera{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.outputarea .firstpera span{
+    font-weight: 600;
+    color: #4acf21;
+}
+.outputarea .secondpera{
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(to left top, #18837c, #4acf21);
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+</style>
+
+<section class="container">
+    <div class="inputarea">
+    <input type="text" id="input" placeholder="Enter Your Full Name.">
+    <button id="generate">generate</button>
+    </div>
+    
+    <div class="error" id="error">Enter Your Name!</div>
+    
+    <div class="outputarea">
+    <p class="firstpera"><span id="nameresult">KunaL KumaR</span> Today Your Lucky Number is</p>
+    <p id="numberresult" class="secondpera">100</p>
+    </div>
+</section>
+<br />
+
+
+
+<script>
+var generate = document.getElementById("generate");
+var input = document.getElementById("input");
+var nameresult = document.getElementById("nameresult");
+var numberresult = document.getElementById("numberresult");
+generate.addEventListener("click", () => {
+if(input.value){
+document.querySelector('.error').classList.remove("errorexpand");
+document.querySelector('.outputarea').classList.add("expand");
+nameresult.innerText = input.value;
+var randomNum = Math.random() * 100;
+randomNum = Math.floor(randomNum);
+numberresult.innerText = randomNum;
+}
+else if(input.value === ""){
+document.querySelector('.error').classList.add("errorexpand");
+input.focus();
+}
+
+});
+</script>
